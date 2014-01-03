@@ -1,15 +1,29 @@
 {
-  "manifest_version": 2,
-
-  "name": "Website Highlighter",
-  "description": "Highlights different phrases on different websites.",
-  "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+  "name" : "Website Highlighter",
+  "version" : "1.1",
+  "description" : "Highlights different phrases on different websites.",
+  "background" : {
+    "scripts": ["background.js"]
   },
-  "permissions": [
-    "https://secure.flickr.com/"
-  ]
+  "page_action" :
+  {
+    "default_icon" : "sandwich-19.png",
+    "default_title" : "There's a good post on this page!"
+  },
+  "content_scripts" : [
+    {
+      "matches" : [
+        "http://mbd.scout.com/*",
+        "https://mbd.scout.com/*"
+      ],
+      "js" : ["contentscript.js"],
+      "run_at" : "document_idle",
+      "all_frames" : false
+    }
+  ],
+  "icons" : {
+    "48" : "sandwich-48.png",
+    "128" : "sandwich-128.png"
+  },
+  "manifest_version": 2
 }
