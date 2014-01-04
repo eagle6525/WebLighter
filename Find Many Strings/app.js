@@ -78,7 +78,3 @@ document.addEventListener('DOMContentLoaded', function () {
   var delimField = document.getElementById('delim');
   delimField.addEventListener('keypress', handle_keypress);
 });
-
-
-chrome.tabs.executeScript(null,
-	{code:"$(document.body).highlight('Tracy Pierson','"+random_color()+"')"});
