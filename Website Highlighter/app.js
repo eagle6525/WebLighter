@@ -84,7 +84,7 @@ var delimToken = ", "
 var mods = 'Tracy Pierson, Greg Biggins, DERF18, HITITLONG, Greg Hicks, SamoRed, 11banners, BrandonHuffman, DavidWoods'
 var scouts = 'JoshGershon, EvanDaniels, AnnabelStephan, AnnaHickey'
 var connectedSomehow = 'goUCLA05'
-var teamMembers = 'bretth17, uclaBBD'
+var teamMembers = 'bretth17, uclaBBD, jacklaso'
 
 var phrasesToHighlight = mods.split(delimToken);
 for (var i=0; i < phrasesToHighlight.length; i++) {
