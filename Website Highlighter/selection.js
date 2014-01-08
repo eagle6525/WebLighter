@@ -42,7 +42,7 @@ function pageMatches() {
 
 	var delimToken = ", "
 	var mods = 'Tracy Pierson, Greg Biggins, DERF18, HITITLONG, Greg Hicks, SamoRed, 11banners, BrandonHuffman, DavidWoods'
-	var scouts = 'JoshGershon, EvanDaniels, AnnabelStephan, AnnaHickey'
+	var scouts = 'JoshGershon, EvanDaniels, AnnabelStephan, AnnaHickey, Scott Kennedy'
 	var connectedSomehow = 'goUCLA05'
 	var teamMembers = 'bretth17, uclaBBD, jacklaso'
 
