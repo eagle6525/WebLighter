@@ -1,46 +1,67 @@
 var storage = chrome.storage.sync;
 
-// Get at the DOM controls used in the sample.
+// Top level pref key
+var prefKey = 'whPrefKeys';
+
+// Get at the DOM controls
 var resetButton = document.querySelector('button.reset');
 var submitButton = document.querySelector('button.submit');
 var textarea = document.querySelector('textarea');
+var select = document.querySelector('select');
 
-// Load any snippet that may have previously been saved.
+// Load prefs
 loadChanges();
 
 submitButton.addEventListener('click', saveChanges);
 resetButton.addEventListener('click', reset);
 
 function saveChanges() {
-  // Get the current snippet from the form.
-  var inputSnippet = textarea.value;
-  // Check that there's some code there.
-  if (! inputSnippet) {
-    message('Error: No Snippet specified');
-    return;
-  }
-  // Save it using the Chrome extension storage API.
-  storage.set({'snippet': inputSnippet}, function() {
-    // Notify that we saved.
-    message('Settings saved');
-  });
+  // Save using Chrome storage API
+  
+	var obj= {};
+	obj[prefKey] = 'BRO Mods, BRO Scouts, BRO Connected Somehow, BRO Team Members';
+  storage.set(obj,
+//   			   'BRO Mods URL' : 'http://mbd.scout.com*',
+//   			   'BRO Mods Phrases' : 'Tracy Pierson, Greg Biggins, DERF18, HITITLONG, Greg Hicks, SamoRed, 11banners, BrandonHuffman, DavidWoods',
+//   			   'BRO Scouts URL' : 'http://mbd.scout.com*',
+//   			   'BRO Scouts Phrases' : 'JoshGershon, EvanDaniels, AnnabelStephan, AnnaHickey, Scott Kennedy',
+//   			   'BRO Connected Somehow URL' : 'http://mbd.scout.com*',
+//   			   'BRO Connected Somehow Phrases' : 'goUCLA05',
+//   			   'BRO Team Members URL' : 'http://mbd.scout.com*',
+//   			   'BRO Team Members Phrases' : 'bretth17, uclaBBD, jacklaso'},
+  			   function() {
+			     // Notify that we saved.
+				 message('Settings saved');
+				 console.log(storage);
+			   }
+  );
+  console.log('end save');
 }
 
 function loadChanges() {
-  storage.get({'snippet':'wtf'}, function(items) {
+  storage.get(prefKey, function(items) {
     // To avoid checking items.snippet we could specify storage.get({snippet: ''}) to
     // return a default value of '' if there is no snippet value yet.
-    if (items.snippet) {
-      textarea.value = items.snippet;
+    if (items[prefKey]) {
+      textarea.value = items[prefKey];
+      
+      for (var i = 0; i < 10; i++){
+        var opt = document.createElement('option');
+	    opt.value = i;
+	    opt.innerHTML = i;
+	    select.appendChild(opt);
+	  }
+	  
+// 	  var button = document.createElement('button');
+// 	  document.add(button);
+      
       message('Loaded Settings');
     }
   });
 }
 
 function reset() {
-  // Remove the saved value from storage. storage.clear would achieve the same
-  // thing.
-  storage.remove('snippet', function(items) {
+  storage.clear(function(items) {
     message('Reset Settings');
   });
   // Refresh the text area.
