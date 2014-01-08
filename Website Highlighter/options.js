@@ -27,7 +27,7 @@ function saveChanges() {
 }
 
 function loadChanges() {
-  storage.get('snippet', function(items) {
+  storage.get({'snippet':'wtf'}, function(items) {
     // To avoid checking items.snippet we could specify storage.get({snippet: ''}) to
     // return a default value of '' if there is no snippet value yet.
     if (items.snippet) {
