@@ -1,5 +1,13 @@
-console.log('foo before');
-// console.log(console.log(window.document.location.href));
+console.log(window.document.location.href);
+var currentURL = window.document.location.href;
+var urlToMatch = 'mbd.scout.com';
+var regex = new RegExp(urlToMatch,"g");
+if (currentURL.match(regex)) {
+	console.log('if before');
+	pageMatches()
+	console.log('if after');
+}
+
 
 function random_color() {
 
@@ -29,35 +37,39 @@ function random_color() {
     return style;
 }
 
-var delimToken = ", "
-var mods = 'Tracy Pierson, Greg Biggins, DERF18, HITITLONG, Greg Hicks, SamoRed, 11banners, BrandonHuffman, DavidWoods'
-var scouts = 'JoshGershon, EvanDaniels, AnnabelStephan, AnnaHickey'
-var connectedSomehow = 'goUCLA05'
-var teamMembers = 'bretth17, uclaBBD, jacklaso'
+function pageMatches() {
+	console.log('foo before');
 
-// console.log(mods);
-var phrasesToHighlight = mods.split(delimToken);
-console.log(phrasesToHighlight);
-for (var i=0; i < phrasesToHighlight.length; i++) {
-	$(document.body).highlight(phrasesToHighlight[i], random_color());
+	var delimToken = ", "
+	var mods = 'Tracy Pierson, Greg Biggins, DERF18, HITITLONG, Greg Hicks, SamoRed, 11banners, BrandonHuffman, DavidWoods'
+	var scouts = 'JoshGershon, EvanDaniels, AnnabelStephan, AnnaHickey'
+	var connectedSomehow = 'goUCLA05'
+	var teamMembers = 'bretth17, uclaBBD, jacklaso'
+
+	var phrasesToHighlight = mods.split(delimToken);
+	console.log(mods);
+	console.log(phrasesToHighlight);
+	for (var i=0; i < phrasesToHighlight.length; i++) {
+		$(document.body).highlight(phrasesToHighlight[i], random_color());
+	}
+
+	phrasesToHighlight = scouts.split(delimToken);
+	console.log(phrasesToHighlight);
+	for (var i=0; i < phrasesToHighlight.length; i++) {
+		$(document.body).highlight(phrasesToHighlight[i], random_color());
+	}
+
+	phrasesToHighlight = connectedSomehow.split(delimToken);
+	console.log(phrasesToHighlight);
+	for (var i=0; i < phrasesToHighlight.length; i++) {
+		$(document.body).highlight(phrasesToHighlight[i], random_color());
+	}
+
+	phrasesToHighlight = teamMembers.split(delimToken);
+	console.log(phrasesToHighlight);
+	for (var i=0; i < phrasesToHighlight.length; i++) {
+		$(document.body).highlight(phrasesToHighlight[i], random_color());
+	}
+
+	console.log('foo after');
 }
-
-phrasesToHighlight = scouts.split(delimToken);
-console.log(phrasesToHighlight);
-for (var i=0; i < phrasesToHighlight.length; i++) {
-	$(document.body).highlight(phrasesToHighlight[i], random_color());
-}
-
-phrasesToHighlight = connectedSomehow.split(delimToken);
-console.log(phrasesToHighlight);
-for (var i=0; i < phrasesToHighlight.length; i++) {
-	$(document.body).highlight(phrasesToHighlight[i], random_color());
-}
-
-phrasesToHighlight = teamMembers.split(delimToken);
-console.log(phrasesToHighlight);
-for (var i=0; i < phrasesToHighlight.length; i++) {
-	$(document.body).highlight(phrasesToHighlight[i], random_color());
-}
-
-console.log('foo after');
