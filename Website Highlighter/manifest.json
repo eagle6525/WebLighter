@@ -3,13 +3,12 @@
   "name": "Website Highlighter",
   "version": "1.0",
   "description": "Highlights different phrases on different websites",
+  "options_page": "options.html",
   "content_scripts": [ {
       "matches": [ "<all_urls>" ],
       "js": [ "jquery.js", "jquery.highlight-3.js", "selection.js" ]
    } ],
-  "permissions": [
-  "tabs"
-  ],
+  "permissions": [ "tabs", "storage" ],
   "icons" : {
     "48" : "sandwich-48.png",
     "128" : "sandwich-128.png"

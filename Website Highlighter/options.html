@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Website Highlighter Options</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      label {
+        display: block;
+      }
+      textarea {
+        font-family: monospace;
+      }
+      .message {
+        height: 20px;
+        background: #eee;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message"></div>
+    <h3>Website Highlighter Options</h3>
+
+    <ol>
+      <li>Enter which sites and phrases to highlight in this textarea and save</li>
+      <li>Navigate to the website</li>
+      <li>BOOM! your phrases are highlighted</li>
+    </ol>
+
+    <textarea name="style_url" id="style_url" cols=80 rows=24
+        placeholder="eg: www.espn.com > Some Writer, Other Writer www.deadspin.com > Third Writer, Another Other Writer"></textarea>
+
+    <br/>
+    <button class="submit">Save</button>
+    <button class="reset">Reset</button>
+
+    <script src="options.js"></script>
+  </body>
+</html>
