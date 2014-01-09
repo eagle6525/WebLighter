@@ -9,29 +9,78 @@ var kURL = 1;
 var kPhrases = 2;
 
 // Get at the DOM controls
-var submitButton = document.querySelector("button.submit");
-var textarea = document.querySelector("textarea");
 var prefsDisplayBody = document.querySelector("tbody.prefsDisplayBody");
+var addNewButton = document.querySelector("button.addNew");
+var submitButton = document.querySelector("button.submit");
+var textarea = document.querySelector("textarea.allPrefs");
 
 // Load prefs
 loadChanges();
 
+addNewButton.addEventListener("click", addNew);
 submitButton.addEventListener("click", saveChanges);
 
+function addNew() {
+	var nameInput = document.querySelector("input.name");
+	var urlInput = document.querySelector("input.url");
+	var phrases = document.querySelector("textarea.phrases");
+	
+	storage.get(prefKey, function(items) {
+		if (items[prefKey]) {		
+			var newPrefs = items[prefKey] + 
+						majorDelim +
+						nameInput.value +
+						minorDelim +
+						urlInput.value +
+						minorDelim +
+						phrases.value;
+			saveChangesString(newPrefs);
+		}
+		else {
+			var newPrefs = nameInput.value +
+						minorDelim +
+						urlInput.value +
+						minorDelim +
+						phrases.value;
+			saveChangesString(newPrefs);
+		}
+    });
+}
+
 function saveChanges() {
+	saveChangesString(textarea.value);
+}
+
+function saveChangesString(prefsToSave) {
 	var obj= {};
-	obj[prefKey] = textarea.value;
+	obj[prefKey] = prefsToSave;
 	storage.set(obj, function() {
+		loadChanges();
 		message("Settings saved");
 	});
 }
 
 function removeList(mouseEvent) {
 	var sender = mouseEvent.toElement.getAttribute("class");;
-	console.log(sender);
+	
+	storage.get(prefKey, function(items) {
+		if (items[prefKey]) {		
+			var topLevelPrefs = items[prefKey].split(majorDelim);
+			var newPrefs = "";
+			for (var counter = 0; counter < topLevelPrefs.length; counter++) {
+				if (counter != sender) {
+					if ("" != newPrefs)
+						newPrefs += majorDelim;
+					newPrefs += topLevelPrefs[counter];
+				}
+			}
+			saveChangesString(newPrefs);
+		}
+    });
 }
 
 function loadChanges() {
+	prefsDisplayBody.innerHTML = '';
 	storage.get(prefKey, function(items) {
 		if (items[prefKey]) {
 			textarea.value = items[prefKey];		
@@ -51,7 +100,6 @@ function loadChanges() {
 				row.insertCell(-1).innerText = siteSettings[kURL];
 				row.insertCell(-1).innerText = siteSettings[kPhrases];
 			}
-			message("Loaded Settings");
 		}
     });
 }
@@ -61,5 +109,5 @@ function message(msg) {
 	message.innerText = msg;
 	setTimeout(function() {
 			message.innerText = "";
-	}, 3000);
+	}, 5000);
 }

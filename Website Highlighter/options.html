@@ -28,22 +28,34 @@
     <h3>Website Highlighter Options</h3>
 
     <ol>
-      <li>Enter which sites and phrases to highlight in this textarea and save</li>
-      <li>Navigate to the website</li>
-      <li>BOOM! your phrases are highlighted</li>
+      <li>Add sites and phrases to highlight</li>
+      <li>Navigate to the website entered</li>
+      <li>BOOM! your phrases are highlighted when the page loads</li>
     </ol>
     
+    <h4>Existing highlights</h4>
     <table class="prefsDisplayTable" border="1">
 	<thead><tr><th></th><th>Name</th><th>URL</th><th>Phrases to highlight</th></tr></thead>
 	<tbody class="prefsDisplayBody">
 	</tbody>
 	</table>
-	<p><small>Some text</small></p>
+	
+	<br><br>
+	<h4>Add new highlight</h4>
+	Name: <input type="text" size="50" class="name" placeholder="Some Label"><br>
+	URL (regex): <input type="text" size="50" class="url" placeholder="eg: http://www.google.com*"><br>
+	Phrases (comma delimited list):<br>
+	<textarea cols=80 rows=12 class="phrases" placeholder="eg: Phrase One, Another Phrase"></textarea>
+	<br>
+	<button class="addNew">Add New</button>
 
-    <textarea name="style_url" id="style_url" cols=80 rows=24
-        placeholder="eg: www.espn.com > Some Writer, Other Writer www.deadspin.com > Third Writer, Another Other Writer"></textarea>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <textarea cols=80 rows=12 class="allPrefs"></textarea>
 
-    <br/>
+    <br>
     <button class="submit">Save</button>
 
     <script src="options.js"></script>
