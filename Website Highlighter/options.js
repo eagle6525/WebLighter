@@ -1,7 +1,12 @@
 var storage = chrome.storage.sync;
 
 // Top level pref key
-var prefKey = 'whPrefKeys';
+var prefKey = 'whPrefKey';
+var minorDelim = '!#%&';
+var majorDelim = '@$^*';
+var kName = 0;
+var kURL = 1;
+var kPhrases = 2;
 
 // Get at the DOM controls
 var resetButton = document.querySelector('button.reset');
@@ -19,22 +24,13 @@ function saveChanges() {
   // Save using Chrome storage API
   
 	var obj= {};
-	obj[prefKey] = 'BRO Mods, BRO Scouts, BRO Connected Somehow, BRO Team Members';
-  storage.set(obj,
-//   			   'BRO Mods URL' : 'http://mbd.scout.com*',
-//   			   'BRO Mods Phrases' : 'Tracy Pierson, Greg Biggins, DERF18, HITITLONG, Greg Hicks, SamoRed, 11banners, BrandonHuffman, DavidWoods',
-//   			   'BRO Scouts URL' : 'http://mbd.scout.com*',
-//   			   'BRO Scouts Phrases' : 'JoshGershon, EvanDaniels, AnnabelStephan, AnnaHickey, Scott Kennedy',
-//   			   'BRO Connected Somehow URL' : 'http://mbd.scout.com*',
-//   			   'BRO Connected Somehow Phrases' : 'goUCLA05',
-//   			   'BRO Team Members URL' : 'http://mbd.scout.com*',
-//   			   'BRO Team Members Phrases' : 'bretth17, uclaBBD, jacklaso'},
-  			   function() {
-			     // Notify that we saved.
-				 message('Settings saved');
-				 console.log(storage);
-			   }
-  );
+	obj[prefKey] = 'BRO Mods!#%&http://mbd.scout.com*!#%&Tracy Pierson, Greg Biggins, DERF18, HITITLONG, Greg Hicks, SamoRed, 11banners, BrandonHuffman, DavidWoods@$^*BRO Scouts!#%&http://mbd.scout.com*!#%&JoshGershon, EvanDaniels, AnnabelStephan, AnnaHickey, Scott Kennedy@$^*BRO Connected Somehow!#%&http://mbd.scout.com*!#%&goUCLA05@$^*BRO Team Members!#%&http://mbd.scout.com*!#%&bretth17, uclaBBD, jacklaso';
+	storage.set(obj, function() {
+			// Notify that we saved.
+			message('Settings saved');
+			console.log(storage);
+		}
+  	);
   console.log('end save');
 }
 
