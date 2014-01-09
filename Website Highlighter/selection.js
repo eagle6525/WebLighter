@@ -2,9 +2,9 @@ loadPrefs();
 
 function loadPrefs() {	
 	var storage = chrome.storage.sync;
-	var prefKey = 'whPrefKey';
-	var minorDelim = '!#%&';
-	var majorDelim = '@$^*';
+	var prefKey = "whPrefKey";
+	var minorDelim = "!#%&";
+	var majorDelim = "@$^*";
 	var kName = 0;
 	var kURL = 1;
 	var kPhrases = 2;
@@ -33,13 +33,13 @@ function highlightPage(phrases) {
 }
 
 function random_color() {
-    var style = 'background: ';
+    var style = "background: ";
     var r, g, b;
     r = Math.round(Math.random() * 0xFF);
     g = Math.round(Math.random() * 0xFF);
     b = Math.round(Math.random() * 0xFF);
 
-    style += 'rgba(' + r + ',' + g + ',' + b + ',1);';
+    style += "rgba(" + r + "," + g + "," + b + ",1);";
 
     /* The formula for calculating luminance is taken from
      * http://www.paciellogroup.com/resources/contrast-analyser.html
@@ -48,9 +48,9 @@ function random_color() {
      */
      var luminance = (r * 299 + g * 587 + b * 114 ) / 1000;
      if (luminance < 125) {
-        style += 'color: #FFFFFF';
+        style += "color: #FFFFFF";
     } else {
-        style += 'color: #000000';
+        style += "color: #000000";
     }
     return style;
 }

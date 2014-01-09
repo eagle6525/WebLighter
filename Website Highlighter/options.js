@@ -1,28 +1,28 @@
 var storage = chrome.storage.sync;
 
 // Top level pref key
-var prefKey = 'whPrefKey';
-var minorDelim = '!#%&';
-var majorDelim = '@$^*';
+var prefKey = "whPrefKey";
+var minorDelim = "!#%&";
+var majorDelim = "@$^*";
 var kName = 0;
 var kURL = 1;
 var kPhrases = 2;
 
 // Get at the DOM controls
-var submitButton = document.querySelector('button.submit');
-var textarea = document.querySelector('textarea');
-var prefsDisplayBody = document.querySelector('tbody.prefsDisplayBody');
+var submitButton = document.querySelector("button.submit");
+var textarea = document.querySelector("textarea");
+var prefsDisplayBody = document.querySelector("tbody.prefsDisplayBody");
 
 // Load prefs
 loadChanges();
 
-submitButton.addEventListener('click', saveChanges);
+submitButton.addEventListener("click", saveChanges);
 
 function saveChanges() {
 	var obj= {};
 	obj[prefKey] = textarea.value;
 	storage.set(obj, function() {
-		message('Settings saved');
+		message("Settings saved");
 	});
 }
 
@@ -44,22 +44,22 @@ function loadChanges() {
 				var button = document.createElement("button");
 				button.setAttribute("class", counter);
 				button.innerHTML = "Remove";
-				button.addEventListener('click', removeList);
+				button.addEventListener("click", removeList);
 				row.insertCell(-1).appendChild(button);
 				
 				row.insertCell(-1).innerText = siteSettings[kName];
 				row.insertCell(-1).innerText = siteSettings[kURL];
 				row.insertCell(-1).innerText = siteSettings[kPhrases];
 			}
-			message('Loaded Settings');
+			message("Loaded Settings");
 		}
     });
 }
 
 function message(msg) {
-	var message = document.querySelector('.message');
+	var message = document.querySelector(".message");
 	message.innerText = msg;
 	setTimeout(function() {
-			message.innerText = '';
+			message.innerText = "";
 	}, 3000);
 }
