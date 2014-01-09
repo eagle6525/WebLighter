@@ -27,28 +27,24 @@
     <div class="message"></div>
     <h3>Website Highlighter Options</h3>
 
-	<table class="prefsDisplayTable" border="1">
-	<tr><th>Name</th><th>URL</th><th>Phrases</th></tr>
-	<tr><td>D</td><td>E</td><td>F</td></tr>
-	</table>
-	
-	<p><small>Created with</small></p>
-
     <ol>
       <li>Enter which sites and phrases to highlight in this textarea and save</li>
       <li>Navigate to the website</li>
       <li>BOOM! your phrases are highlighted</li>
     </ol>
     
-    <div class="prefsDetail"></span>
+    <table class="prefsDisplayTable" border="1">
+	<thead><tr><th></th><th>Name</th><th>URL</th><th>Phrases to highlight</th></tr></thead>
+	<tbody class="prefsDisplayBody">
+	</tbody>
+	</table>
+	<p><small>Some text</small></p>
 
     <textarea name="style_url" id="style_url" cols=80 rows=24
         placeholder="eg: www.espn.com > Some Writer, Other Writer www.deadspin.com > Third Writer, Another Other Writer"></textarea>
 
     <br/>
-    <select name="websites"></select>
     <button class="submit">Save</button>
-    <button class="reset">Reset</button>
 
     <script src="options.js"></script>
   </body>

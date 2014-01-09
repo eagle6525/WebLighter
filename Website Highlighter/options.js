@@ -9,59 +9,51 @@ var kURL = 1;
 var kPhrases = 2;
 
 // Get at the DOM controls
-var resetButton = document.querySelector('button.reset');
 var submitButton = document.querySelector('button.submit');
 var textarea = document.querySelector('textarea');
-var select = document.querySelector('select');
+var prefsDisplayBody = document.querySelector('tbody.prefsDisplayBody');
 
 // Load prefs
 loadChanges();
 
 submitButton.addEventListener('click', saveChanges);
-resetButton.addEventListener('click', reset);
 
 function saveChanges() {
-  // Save using Chrome storage API
-  
 	var obj= {};
 	obj[prefKey] = textarea.value;
 	storage.set(obj, function() {
-			// Notify that we saved.
-			message('Settings saved');
-			console.log(storage);
-		}
-  	);
-  console.log('end save');
+		message('Settings saved');
+	});
+}
+
+function removeList(mouseEvent) {
+	var sender = mouseEvent.toElement.getAttribute("class");;
+	console.log(sender);
 }
 
 function loadChanges() {
-  storage.get(prefKey, function(items) {
-    // To avoid checking items.snippet we could specify storage.get({snippet: ''}) to
-    // return a default value of '' if there is no snippet value yet.
-    if (items[prefKey]) {
-      textarea.value = items[prefKey];
-      
-      for (var i = 0; i < 10; i++){
-        var opt = document.createElement('option');
-	    opt.value = i;
-	    opt.innerHTML = i;
-	    select.appendChild(opt);
-	  }
-	  
-// 	  var button = document.createElement('button');
-// 	  document.add(button);
-      
-      message('Loaded Settings');
-    }
-  });
-}
-
-function reset() {
-  storage.clear(function(items) {
-    message('Reset Settings');
-  });
-  // Refresh the text area.
-  textarea.value = '';
+	storage.get(prefKey, function(items) {
+		if (items[prefKey]) {
+			textarea.value = items[prefKey];		
+			var topLevelPrefs = items[prefKey].split(majorDelim);
+			var currentURL = window.document.location.href;
+			for (var counter = 0; counter < topLevelPrefs.length; counter++) {
+				var siteSettings = topLevelPrefs[counter].split(minorDelim);
+				var row = prefsDisplayBody.insertRow(-1);
+				
+				var button = document.createElement("button");
+				button.setAttribute("class", counter);
+				button.innerHTML = "Remove";
+				button.addEventListener('click', removeList);
+				row.insertCell(-1).appendChild(button);
+				
+				row.insertCell(-1).innerText = siteSettings[kName];
+				row.insertCell(-1).innerText = siteSettings[kURL];
+				row.insertCell(-1).innerText = siteSettings[kPhrases];
+			}
+			message('Loaded Settings');
+		}
+    });
 }
 
 function message(msg) {
