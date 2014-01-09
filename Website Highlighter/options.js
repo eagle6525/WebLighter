@@ -24,7 +24,7 @@ function saveChanges() {
   // Save using Chrome storage API
   
 	var obj= {};
-	obj[prefKey] = 'BRO Genius Studs!#%&http://mbd.scout.com*!#%&Tracy Pierson, Greg Biggins, DERF18, HITITLONG, Greg Hicks, SamoRed, 11banners, BrandonHuffman, DavidWoods@$^*BRO Scouts!#%&http://mbd.scout.com*!#%&JoshGershon, EvanDaniels, AnnabelStephan, AnnaHickey, Scott Kennedy@$^*BRO Connected Somehow!#%&http://mbd.scout.com*!#%&goUCLA05@$^*BRO Team Members!#%&http://mbd.scout.com*!#%&bretth17, uclaBBD, jacklaso';
+	obj[prefKey] = textarea.value;
 	storage.set(obj, function() {
 			// Notify that we saved.
 			message('Settings saved');
