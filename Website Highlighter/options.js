@@ -65,9 +65,9 @@ function reset() {
 }
 
 function message(msg) {
-  var message = document.querySelector('.message');
-  message.innerText = msg;
-  setTimeout(function() {
-    message.innerText = '';
-  }, 3000);
+	var message = document.querySelector('.message');
+	message.innerText = msg;
+	setTimeout(function() {
+			message.innerText = '';
+	}, 3000);
 }
