@@ -1,0 +1,4 @@
+WebsiteHighlighter
+==================
+
+Website Highlighter Extension
