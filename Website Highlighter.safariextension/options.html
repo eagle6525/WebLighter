@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Website Highlighter Options</title>
+    <style>
+	body {
+		font-family: sans-serif;
+	}
+	label {
+		display: block;
+	}
+	textarea {
+		font-family: monospace;
+	}
+	.message {
+		height: 20px;
+		background: #eee;
+		padding: 5px;
+	}
+	.prefsDisplayTable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+	.prefsDisplayTable th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}
+	.prefsDisplayTable tr {background-color:#d4e3e5;}
+	.prefsDisplayTable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}
+    </style>
+  </head>
+  <body>
+    <div class="message"></div>
+    <h3>Website Highlighter Options</h3>
+
+    <ol>
+      <li>Add sites and phrases to highlight</li>
+      <li>Navigate to the website entered</li>
+      <li>BOOM! your phrases are highlighted when the page loads</li>
+    </ol>
+    
+    <h4>Existing highlights</h4>
+    <table class="prefsDisplayTable" border="1">
+	<thead><tr><th></th><th>Name</th><th>URL</th><th>Phrases to highlight</th></tr></thead>
+	<tbody class="prefsDisplayBody">
+	</tbody>
+	</table>
+	
+	<br><br>
+	<h4>Add new highlight</h4>
+	Name: <input type="text" size="50" class="name" placeholder="Some Label"><br>
+	URL (regex): <input type="text" size="50" class="url" placeholder="eg: http://www.google.com*"><br>
+	Phrases (comma delimited list):<br>
+	<textarea cols=80 rows=12 class="phrases" placeholder="eg: Phrase One, Another Phrase"></textarea>
+	<br>
+	<button class="addNew">Add New</button>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <textarea cols=80 rows=12 class="allPrefs"></textarea>
+
+    <br>
+    <button class="submit">Save</button>
+
+    <script src="options.js"></script>
+  </body>
+</html>
